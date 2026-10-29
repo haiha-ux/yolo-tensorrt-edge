@@ -1,0 +1,10 @@
+data/
+weights/
+engines/
+*.onnx
+*.engine
+*.plan
+*.pt
+*.cache
+__pycache__/
+runs/

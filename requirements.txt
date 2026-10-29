@@ -1,0 +1,8 @@
+ultralytics>=8.4
+torch
+onnx
+onnxsim
+onnxruntime
+tensorrt
+matplotlib
+pytest

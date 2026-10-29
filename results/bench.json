@@ -1,0 +1,106 @@
+{
+  "gpu": "NVIDIA GB10",
+  "torch": "2.11.0+cu130",
+  "ort_providers": [
+    "AzureExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "runs": 1000,
+  "warmup": 100,
+  "results": [
+    {
+      "mean_ms": 2.489,
+      "p50_ms": 2.482,
+      "p95_ms": 2.497,
+      "fps": 401.8,
+      "size_mb": 5.4,
+      "pass_p50_ms": [
+        2.502,
+        2.487,
+        2.482
+      ],
+      "backend": "PyTorch eager",
+      "precision": "FP32",
+      "device": "cuda"
+    },
+    {
+      "mean_ms": 30.926,
+      "p50_ms": 28.815,
+      "p95_ms": 43.283,
+      "fps": 32.3,
+      "size_mb": 10.2,
+      "pass_p50_ms": [
+        29.844,
+        29.283,
+        28.815
+      ],
+      "backend": "ONNX Runtime",
+      "precision": "FP32",
+      "device": "cpu (CPUExecutionProvider)"
+    },
+    {
+      "mean_ms": 1.652,
+      "p50_ms": 1.65,
+      "p95_ms": 1.664,
+      "fps": 605.4,
+      "size_mb": 12.8,
+      "pass_p50_ms": [
+        1.694,
+        1.684,
+        1.65
+      ],
+      "trtexec_gpu_median_ms": 1.82178,
+      "backend": "TensorRT",
+      "precision": "FP32",
+      "device": "cuda"
+    },
+    {
+      "mean_ms": 0.851,
+      "p50_ms": 0.847,
+      "p95_ms": 0.86,
+      "fps": 1175.2,
+      "size_mb": 7.0,
+      "pass_p50_ms": [
+        0.847,
+        0.85,
+        0.853
+      ],
+      "trtexec_gpu_median_ms": 0.89624,
+      "backend": "TensorRT",
+      "precision": "FP16",
+      "device": "cuda"
+    },
+    {
+      "mean_ms": 1.324,
+      "p50_ms": 1.319,
+      "p95_ms": 1.332,
+      "fps": 755.1,
+      "size_mb": 16.3,
+      "pass_p50_ms": [
+        1.319,
+        1.321,
+        1.348
+      ],
+      "trtexec_gpu_median_ms": 1.38159,
+      "backend": "TensorRT",
+      "precision": "INT8",
+      "device": "cuda"
+    },
+    {
+      "mean_ms": 1.981,
+      "p50_ms": 1.976,
+      "p95_ms": 1.994,
+      "fps": 504.8,
+      "size_mb": 52.5,
+      "pass_p50_ms": [
+        1.976,
+        1.986,
+        2.023
+      ],
+      "trtexec_gpu_median_ms": 2.11063,
+      "backend": "TensorRT",
+      "precision": "INT8+FP16",
+      "device": "cuda"
+    }
+  ]
+}
