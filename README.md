@@ -36,7 +36,7 @@ Take-aways, plainly:
 
 ```bash
 pip install -r requirements.txt            # CUDA-enabled torch + TensorRT 10.x required
-curl -L -o weights/yolo11n.pt https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11n.pt   # mkdir weights first
+mkdir -p weights && curl -L -o weights/yolo11n.pt https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11n.pt
 python prepare_data.py     # downloads COCO val2017 (~800 MB) + labels, builds 500 eval / 200 calib subsets
 python export.py           # ONNX + TensorRT FP32/FP16/INT8/INT8+FP16 into engines/ (~2 min)
 python bench.py            # -> results/bench.json   (~4 min)
