@@ -6,7 +6,7 @@ Take a YOLO model from PyTorch to ONNX to TensorRT (FP32, FP16, INT8), then meas
 
 ## Results
 
-YOLO11n, 640x640, batch 1, NVIDIA GB10 (Blackwell, aarch64 **desktop-class** GPU, CUDA 13, TensorRT 10.16, torch 2.11, ONNX Runtime 1.22). Raw data: `results/bench.json`, `results/eval.json`, `results/export_log.json`.
+YOLO11n, 640x640, batch 1, NVIDIA GB10 (Blackwell, aarch64 desktop-class GPU, CUDA 13, TensorRT 10.16, torch 2.11, ONNX Runtime 1.22). Raw data: `results/bench.json`, `results/eval.json`, `results/export_log.json`.
 
 | Backend | Precision | mAP50-95 | mAP50 | p50 ms | p95 ms | FPS (batch 1) | File size MB |
 |---|---|---|---|---|---|---|---|
@@ -17,13 +17,15 @@ YOLO11n, 640x640, batch 1, NVIDIA GB10 (Blackwell, aarch64 **desktop-class** GPU
 | TensorRT | INT8 (Ultralytics build) | 0.404 | 0.563 | 1.32 | 1.33 | 755 | 16.3 |
 | TensorRT | INT8+FP16 (own builder, opt. level 1) | 0.404 | 0.562 | 1.98 | 1.99 | 505 | 52.5 |
 
-Take-aways, plainly:
-- **FP16 is the winner here**: about 2x faster than TensorRT FP32 and ~3x faster than PyTorch eager, with no measurable accuracy loss (0.424 vs 0.424).
-- **INT8 lost accuracy (-2.0 mAP50-95 points) and was slower than FP16** on this GPU for this tiny model. Likely reasons: YOLO11n is small and launch/memory-bound rather than compute-bound, quantize/dequantize nodes add overhead, and the INT8 engine file is bigger than FP16. The section "When INT8 pays off" below repeats this with larger models, batch 8, 512 train2017 calibration images and a per-layer FP16 detection head: INT8 stayed slower than FP16 there as well, so the model size alone did not explain it. Hardware with dedicated INT8 paths (Jetson DLA/Orin) and quantization-aware training were not tried.
-- The INT8 rows in this first table used 200 val2017 images (disjoint from the eval images, TensorRT recommends 300+) and a MinMax calibrator. The larger study below uses 512 train2017 images.
-- Building INT8+FP16 with my own builder at TensorRT's default optimization level failed on this setup (`Myelin ... Could not find any implementation for node {ForeignNode[Quantize ...]}`); it only builds at `builder_optimization_level <= 1`, which is why that row is slower and larger. Treat it as a reproducible failure report, not a tuned result.
-- ONNX Runtime ran on **CPU**: the ONNX Runtime wheel on this machine exposes no CUDA provider. Its row is a CPU baseline, not a GPU comparison.
-- PyTorch's mAP is ~0.6 pt lower than the static-shape ONNX/TensorRT runs because Ultralytics validates `.pt` with rectangular (minimal-padding) batches while the exported models use fixed square 640x640 letterboxing. Same weights.
+FP16 is the clear choice on this GPU. It is about 2x faster than TensorRT FP32 and about 3x faster than PyTorch eager, with no measurable accuracy loss (0.424 against 0.424).
+
+INT8 lost 2.0 mAP50-95 points and was slower than FP16 for this small model. YOLO11n is launch- and memory-bound rather than compute-bound, the quantize and dequantize nodes add work, and the INT8 engine file is larger than the FP16 one. The section below repeats the test with larger models, batch 8, 512 train2017 calibration images and an FP16 detection head, and INT8 stayed slower there too, so model size alone does not explain it. I did not try hardware with dedicated INT8 paths (Jetson Orin DLA) or quantization-aware training.
+
+The INT8 rows in this first table used 200 val2017 images for calibration, kept apart from the evaluation images, with a MinMax calibrator. TensorRT recommends 300 or more; the larger study below uses 512 train2017 images.
+
+Building INT8 with FP16 fallback through my own builder failed at TensorRT's default optimization level (`Myelin ... Could not find any implementation for node {ForeignNode[Quantize ...]}`). It only builds at `builder_optimization_level <= 1`, which is why that row is slower and larger. Read it as a reproducible failure report, not a tuned result.
+
+ONNX Runtime ran on the CPU because the wheel on this machine has no CUDA provider, so its row is a CPU baseline. PyTorch's mAP is about 0.6 points lower than the ONNX and TensorRT runs because Ultralytics validates the `.pt` model with rectangular batches, while the exported models use fixed 640x640 letterboxing. The weights are the same.
 
 ## When INT8 pays off
 
