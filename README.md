@@ -84,10 +84,10 @@ Practical reading for a client: "INT8 does not work" is too strong, but "INT8 is
 
 ## How the numbers were measured
 
-- **Accuracy** (`eval.py`): Ultralytics `val`, conf 0.001, NMS IoU 0.7, on the first 500 images (sorted by filename, with labels) of COCO val2017. 500 images is a subset: mAP is comparable across rows here, not to published full-val numbers.
-- **Latency** (`bench.py`): model forward pass only, random FP32 input already on the GPU, no letterbox/NMS, `cuda.synchronize` around each call. 100 warm-up + 1000 timed runs, 3 passes, best-p50 pass reported (the GPU is a shared machine; per-pass p50s are in `bench.json`). FPS = 1000 / mean latency, i.e. sequential batch-1 throughput. The batch 1 table above is the only one with PyTorch and ONNX Runtime rows; batched throughput for TensorRT is in the INT8 section.
+- Accuracy (`eval.py`): Ultralytics `val`, conf 0.001, NMS IoU 0.7, on the first 500 images (sorted by filename, with labels) of COCO val2017. 500 images is a subset: mAP is comparable across rows here, not to published full-val numbers.
+- Latency (`bench.py`): model forward pass only, random FP32 input already on the GPU, no letterbox/NMS, `cuda.synchronize` around each call. 100 warm-up + 1000 timed runs, 3 passes, best-p50 pass reported (the GPU is a shared machine; per-pass p50s are in `bench.json`). FPS = 1000 / mean latency, i.e. sequential batch-1 throughput. The batch 1 table above is the only one with PyTorch and ONNX Runtime rows; batched throughput for TensorRT is in the INT8 section.
 - `bench.json` also holds `trtexec` GPU-compute medians for the engines (kernel time only, a bit different from the end-to-end numbers above).
-- **Not Jetson**: this is a GB10 desktop GPU. Jetson numbers will differ, in absolute value and likely in the FP16/INT8 ratio.
+- Not Jetson: this is a GB10 desktop GPU. Jetson numbers will differ, in absolute value and likely in the FP16/INT8 ratio.
 
 ## Reproduce
 
@@ -113,8 +113,8 @@ Whole pipeline after the data download took about 6.5 minutes on this machine. W
 
 ## What I would do on a Jetson Orin / Qualcomm NPU (approach, not measured here)
 
-- **Jetson Orin**: export ONNX on the host, build the TensorRT engine **on the device** (engines are not portable across GPU architectures/TRT versions), lock clocks with `nvpmodel`/`jetson_clocks` before benchmarking, and measure with `trtexec` plus an end-to-end pipeline (camera decode, letterbox, NMS) because pre/post-processing often dominates on small models. Try FP16 first, then INT8 with 500+ representative calibration frames from the real deployment scene, and check whether layers can run on the DLA with GPU fallback. Verify mAP on the customer's own labelled data, not only COCO.
-- **Qualcomm NPU (e.g. Hexagon via QNN / AI Hub)**: export a static-shape ONNX, quantize to INT8/W8A8 with a calibration set from the target domain, compile with the Qualcomm toolchain, and compare on-device accuracy and latency to the FP32 reference layer by layer when accuracy drops. Detection heads (box decode, NMS) are typically kept off the NPU or simplified.
+- Jetson Orin: export ONNX on the host, build the TensorRT engine on the device (engines are not portable across GPU architectures/TRT versions), lock clocks with `nvpmodel`/`jetson_clocks` before benchmarking, and measure with `trtexec` plus an end-to-end pipeline (camera decode, letterbox, NMS) because pre/post-processing often dominates on small models. Try FP16 first, then INT8 with 500+ representative calibration frames from the real deployment scene, and check whether layers can run on the DLA with GPU fallback. Verify mAP on the customer's own labelled data, not only COCO.
+- Qualcomm NPU (e.g. Hexagon via QNN / AI Hub): export a static-shape ONNX, quantize to INT8/W8A8 with a calibration set from the target domain, compile with the Qualcomm toolchain, and compare on-device accuracy and latency to the FP32 reference layer by layer when accuracy drops. Detection heads (box decode, NMS) are typically kept off the NPU or simplified.
 - In both cases the same workflow as this repo applies: one script per stage, an identical eval harness across precisions, and raw numbers saved next to the code.
 
 ## License
