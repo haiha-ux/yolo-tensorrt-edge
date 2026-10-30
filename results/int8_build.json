@@ -1,0 +1,200 @@
+{
+ "yolo11n_fp16_l1_b8": {
+  "build_s": 33.9,
+  "opt_level": 1,
+  "head_layers_fp16": 0,
+  "calib_images": 0
+ },
+ "yolo11l_int8head_b1": {
+  "build_s": 18.7,
+  "opt_level": 1,
+  "head_layers_fp16": 84,
+  "calib_images": 512
+ },
+ "yolo11l_int8head_b8": {
+  "build_s": 20.6,
+  "opt_level": 1,
+  "head_layers_fp16": 84,
+  "calib_images": 512
+ },
+ "yolo11l_fp16_l1_b8": {
+  "build_s": 13.1,
+  "opt_level": 1,
+  "head_layers_fp16": 0,
+  "calib_images": 0
+ },
+ "yolo11n_fp16_l1_b1": {
+  "build_s": 8.9,
+  "opt_level": 1,
+  "head_layers_fp16": 0,
+  "calib_images": 0
+ },
+ "yolo11m_fp16_l1_b1": {
+  "build_s": 35.0,
+  "opt_level": 1,
+  "head_layers_fp16": 0,
+  "calib_images": 0
+ },
+ "yolo11m_fp16_b8": {
+  "build_s": 64.2,
+  "opt_level": "default(3)",
+  "head_layers_fp16": 0,
+  "calib_images": 0
+ },
+ "yolo11n_int8fp16_b1": {
+  "build_s": 14.3,
+  "opt_level": 1,
+  "head_layers_fp16": 0,
+  "calib_images": 512
+ },
+ "yolo11l_int8mm_b1": {
+  "build_s": 144.8,
+  "opt_level": "default(3)",
+  "head_layers_fp16": 0,
+  "calib_images": 512
+ },
+ "yolo11m_int8_b8": {
+  "build_s": 57.0,
+  "opt_level": "default(3)",
+  "head_layers_fp16": 0,
+  "calib_images": 512
+ },
+ "yolo11n_int8_b8": {
+  "build_s": 63.9,
+  "opt_level": "default(3)",
+  "head_layers_fp16": 0,
+  "calib_images": 512
+ },
+ "yolo11m_int8head_b8": {
+  "build_s": 41.7,
+  "opt_level": 1,
+  "head_layers_fp16": 84,
+  "calib_images": 512
+ },
+ "yolo11l_int8_b1": {
+  "build_s": 298.3,
+  "opt_level": "default(3)",
+  "head_layers_fp16": 0,
+  "calib_images": 512
+ },
+ "yolo11l_fp16_b8": {
+  "build_s": 23.9,
+  "opt_level": "default(3)",
+  "head_layers_fp16": 0,
+  "calib_images": 0
+ },
+ "yolo11l_int8_b8": {
+  "build_s": 24.0,
+  "opt_level": "default(3)",
+  "head_layers_fp16": 0,
+  "calib_images": 512
+ },
+ "yolo11n_fp16_b1": {
+  "build_s": 14.3,
+  "opt_level": "default(3)",
+  "head_layers_fp16": 0,
+  "calib_images": 0
+ },
+ "yolo11m_int8mm_b1": {
+  "build_s": 110.3,
+  "opt_level": "default(3)",
+  "head_layers_fp16": 0,
+  "calib_images": 512
+ },
+ "yolo11n_int8_b1": {
+  "build_s": 15.4,
+  "opt_level": "default(3)",
+  "head_layers_fp16": 0,
+  "calib_images": 512
+ },
+ "yolo11m_int8fp16_b1": {
+  "build_s": 30.1,
+  "opt_level": 1,
+  "head_layers_fp16": 0,
+  "calib_images": 512
+ },
+ "yolo11n_int8head_b1": {
+  "build_s": 13.9,
+  "opt_level": 1,
+  "head_layers_fp16": 84,
+  "calib_images": 512
+ },
+ "yolo11m_int8fp16_b8": {
+  "build_s": 42.0,
+  "opt_level": 1,
+  "head_layers_fp16": 0,
+  "calib_images": 512
+ },
+ "yolo11n_int8fp16_b8": {
+  "build_s": 45.9,
+  "opt_level": 1,
+  "head_layers_fp16": 0,
+  "calib_images": 512
+ },
+ "yolo11n_int8mm_b1": {
+  "build_s": 48.9,
+  "opt_level": "default(3)",
+  "head_layers_fp16": 0,
+  "calib_images": 512
+ },
+ "yolo11l_int8fp16_b1": {
+  "build_s": 19.2,
+  "opt_level": 1,
+  "head_layers_fp16": 0,
+  "calib_images": 512
+ },
+ "yolo11m_int8_b1": {
+  "build_s": 700.6,
+  "opt_level": "default(3)",
+  "head_layers_fp16": 0,
+  "calib_images": 512
+ },
+ "yolo11m_fp16_b1": {
+  "build_s": 76.2,
+  "opt_level": "default(3)",
+  "head_layers_fp16": 0,
+  "calib_images": 0
+ },
+ "yolo11l_fp16_b1": {
+  "build_s": 57.9,
+  "opt_level": "default(3)",
+  "head_layers_fp16": 0,
+  "calib_images": 0
+ },
+ "yolo11m_fp16_l1_b8": {
+  "build_s": 30.9,
+  "opt_level": 1,
+  "head_layers_fp16": 0,
+  "calib_images": 0
+ },
+ "yolo11m_int8head_b1": {
+  "build_s": 28.0,
+  "opt_level": 1,
+  "head_layers_fp16": 84,
+  "calib_images": 512
+ },
+ "yolo11n_int8head_b8": {
+  "build_s": 51.9,
+  "opt_level": 1,
+  "head_layers_fp16": 84,
+  "calib_images": 512
+ },
+ "yolo11l_fp16_l1_b1": {
+  "build_s": 31.2,
+  "opt_level": 1,
+  "head_layers_fp16": 0,
+  "calib_images": 0
+ },
+ "yolo11l_int8fp16_b8": {
+  "build_s": 21.6,
+  "opt_level": 1,
+  "head_layers_fp16": 0,
+  "calib_images": 512
+ },
+ "yolo11n_fp16_b8": {
+  "build_s": 35.4,
+  "opt_level": "default(3)",
+  "head_layers_fp16": 0,
+  "calib_images": 0
+ }
+}

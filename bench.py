@@ -1,4 +1,4 @@
-"""Latency / FPS benchmark, batch 1, 640x640. Writes results/bench.json.
+"""Latency / FPS benchmark, batch 1, 640x640 (time_model also takes a batch size, used by int8_study.py). Writes results/bench.json.
 
 Measures the model forward pass only (random FP32 input already on GPU; no letterbox, no NMS)
 through Ultralytics' AutoBackend, so every backend goes through the same harness.
@@ -24,9 +24,9 @@ MODELS = {  # name -> (path, precision label)
 }
 
 
-def time_model(path, device):
+def time_model(path, device, batch=1):
     m = AutoBackend(path, device=device, fp16=False, verbose=False)
-    x = torch.rand(1, 3, 640, 640, device=device)
+    x = torch.rand(batch, 3, 640, 640, device=device)
     cuda = device.type == "cuda"
     ts = []
     with torch.inference_mode():

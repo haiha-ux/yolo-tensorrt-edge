@@ -1,0 +1,596 @@
+{
+ "yolo11n|fp16|1": {
+  "mean_ms": 0.831,
+  "p50_ms": 0.822,
+  "p95_ms": 0.836,
+  "fps": 1203.3,
+  "size_mb": 7.0,
+  "pass_p50_ms": [
+   0.836,
+   0.822,
+   0.825
+  ],
+  "model": "yolo11n",
+  "variant": "fp16",
+  "batch": 1,
+  "img_per_s": 1203.4,
+  "trtexec_gpu_median_ms": 0.886963,
+  "act_mem_mb": 16.1
+ },
+ "yolo11n|fp16_l1|1": {
+  "mean_ms": 0.869,
+  "p50_ms": 0.864,
+  "p95_ms": 0.875,
+  "fps": 1151.2,
+  "size_mb": 6.2,
+  "pass_p50_ms": [
+   0.869,
+   0.871,
+   0.864
+  ],
+  "model": "yolo11n",
+  "variant": "fp16_l1",
+  "batch": 1,
+  "img_per_s": 1150.7,
+  "trtexec_gpu_median_ms": 0.918945,
+  "act_mem_mb": 16.2
+ },
+ "yolo11n|int8|1": {
+  "mean_ms": 1.526,
+  "p50_ms": 1.308,
+  "p95_ms": 3.027,
+  "fps": 655.2,
+  "size_mb": 18.5,
+  "pass_p50_ms": [
+   1.308,
+   1.702,
+   1.862
+  ],
+  "model": "yolo11n",
+  "variant": "int8",
+  "batch": 1,
+  "img_per_s": 655.3,
+  "trtexec_gpu_median_ms": 1.37543,
+  "act_mem_mb": 25.9
+ },
+ "yolo11n|int8fp16|1": {
+  "mean_ms": 1.988,
+  "p50_ms": 1.978,
+  "p95_ms": 2.059,
+  "fps": 503.1,
+  "size_mb": 52.5,
+  "pass_p50_ms": [
+   1.994,
+   1.999,
+   1.978
+  ],
+  "model": "yolo11n",
+  "variant": "int8fp16",
+  "batch": 1,
+  "img_per_s": 503.0,
+  "trtexec_gpu_median_ms": 2.03882,
+  "act_mem_mb": 63.1
+ },
+ "yolo11n|int8head|1": {
+  "mean_ms": 1.958,
+  "p50_ms": 1.948,
+  "p95_ms": 1.969,
+  "fps": 510.8,
+  "size_mb": 50.6,
+  "pass_p50_ms": [
+   1.967,
+   1.965,
+   1.948
+  ],
+  "model": "yolo11n",
+  "variant": "int8head",
+  "batch": 1,
+  "img_per_s": 510.7,
+  "trtexec_gpu_median_ms": 1.95605,
+  "act_mem_mb": 63.1
+ },
+ "yolo11n|fp16|8": {
+  "mean_ms": 5.613,
+  "p50_ms": 5.127,
+  "p95_ms": 6.809,
+  "fps": 178.2,
+  "size_mb": 6.3,
+  "pass_p50_ms": [
+   5.793,
+   7.877,
+   5.127
+  ],
+  "model": "yolo11n",
+  "variant": "fp16",
+  "batch": 8,
+  "img_per_s": 1425.3,
+  "trtexec_gpu_median_ms": 4.96802,
+  "act_mem_mb": 125.0
+ },
+ "yolo11n|fp16_l1|8": {
+  "mean_ms": 5.196,
+  "p50_ms": 5.175,
+  "p95_ms": 5.257,
+  "fps": 192.5,
+  "size_mb": 12.7,
+  "pass_p50_ms": [
+   5.214,
+   5.175,
+   5.18
+  ],
+  "model": "yolo11n",
+  "variant": "fp16_l1",
+  "batch": 8,
+  "img_per_s": 1539.6,
+  "trtexec_gpu_median_ms": 7.34015,
+  "act_mem_mb": 106.3
+ },
+ "yolo11n|int8|8": {
+  "mean_ms": 7.736,
+  "p50_ms": 7.705,
+  "p95_ms": 7.818,
+  "fps": 129.3,
+  "size_mb": 50.0,
+  "pass_p50_ms": [
+   7.892,
+   7.705,
+   7.75
+  ],
+  "model": "yolo11n",
+  "variant": "int8",
+  "batch": 8,
+  "img_per_s": 1034.1,
+  "trtexec_gpu_median_ms": 7.67505,
+  "act_mem_mb": 104.7
+ },
+ "yolo11n|int8fp16|8": {
+  "mean_ms": 13.892,
+  "p50_ms": 13.757,
+  "p95_ms": 14.623,
+  "fps": 72.0,
+  "size_mb": 387.7,
+  "pass_p50_ms": [
+   13.824,
+   13.757,
+   14.424
+  ],
+  "model": "yolo11n",
+  "variant": "int8fp16",
+  "batch": 8,
+  "img_per_s": 575.9,
+  "trtexec_gpu_median_ms": 13.9764,
+  "act_mem_mb": 504.7
+ },
+ "yolo11n|int8head|8": {
+  "mean_ms": 13.082,
+  "p50_ms": 12.873,
+  "p95_ms": 13.714,
+  "fps": 76.4,
+  "size_mb": 370.5,
+  "pass_p50_ms": [
+   13.628,
+   13.781,
+   12.873
+  ],
+  "model": "yolo11n",
+  "variant": "int8head",
+  "batch": 8,
+  "img_per_s": 611.5,
+  "trtexec_gpu_median_ms": 14.0615,
+  "act_mem_mb": 504.7
+ },
+ "yolo11m|fp16|1": {
+  "mean_ms": 2.677,
+  "p50_ms": 2.638,
+  "p95_ms": 2.968,
+  "fps": 373.5,
+  "size_mb": 40.6,
+  "pass_p50_ms": [
+   2.664,
+   2.645,
+   2.638
+  ],
+  "model": "yolo11m",
+  "variant": "fp16",
+  "batch": 1,
+  "img_per_s": 373.6,
+  "trtexec_gpu_median_ms": 2.61548,
+  "act_mem_mb": 55.1
+ },
+ "yolo11m|fp16_l1|1": {
+  "mean_ms": 2.722,
+  "p50_ms": 2.706,
+  "p95_ms": 2.735,
+  "fps": 367.4,
+  "size_mb": 40.7,
+  "pass_p50_ms": [
+   2.72,
+   2.742,
+   2.706
+  ],
+  "model": "yolo11m",
+  "variant": "fp16_l1",
+  "batch": 1,
+  "img_per_s": 367.4,
+  "trtexec_gpu_median_ms": 2.71057,
+  "act_mem_mb": 55.1
+ },
+ "yolo11m|int8|1": {
+  "mean_ms": 3.022,
+  "p50_ms": 2.994,
+  "p95_ms": 3.24,
+  "fps": 330.9,
+  "size_mb": 26.6,
+  "pass_p50_ms": [
+   3.022,
+   2.994,
+   3.036
+  ],
+  "model": "yolo11m",
+  "variant": "int8",
+  "batch": 1,
+  "img_per_s": 330.9,
+  "trtexec_gpu_median_ms": 2.98621,
+  "act_mem_mb": 44.7
+ },
+ "yolo11m|int8fp16|1": {
+  "mean_ms": 3.389,
+  "p50_ms": 3.379,
+  "p95_ms": 3.423,
+  "fps": 295.1,
+  "size_mb": 69.0,
+  "pass_p50_ms": [
+   3.428,
+   3.379,
+   3.395
+  ],
+  "model": "yolo11m",
+  "variant": "int8fp16",
+  "batch": 1,
+  "img_per_s": 295.1,
+  "trtexec_gpu_median_ms": 3.86865,
+  "act_mem_mb": 76.0
+ },
+ "yolo11m|int8head|1": {
+  "mean_ms": 3.366,
+  "p50_ms": 3.331,
+  "p95_ms": 3.638,
+  "fps": 297.1,
+  "size_mb": 68.1,
+  "pass_p50_ms": [
+   3.331,
+   3.342,
+   3.352
+  ],
+  "model": "yolo11m",
+  "variant": "int8head",
+  "batch": 1,
+  "img_per_s": 297.1,
+  "trtexec_gpu_median_ms": 3.31677,
+  "act_mem_mb": 76.0
+ },
+ "yolo11m|fp16|8": {
+  "mean_ms": 22.279,
+  "p50_ms": 21.944,
+  "p95_ms": 25.369,
+  "fps": 44.9,
+  "size_mb": 46.2,
+  "pass_p50_ms": [
+   22.254,
+   21.944,
+   23.062
+  ],
+  "model": "yolo11m",
+  "variant": "fp16",
+  "batch": 8,
+  "img_per_s": 359.1,
+  "trtexec_gpu_median_ms": 22.0962,
+  "act_mem_mb": 440.6
+ },
+ "yolo11m|fp16_l1|8": {
+  "mean_ms": 22.387,
+  "p50_ms": 22.419,
+  "p95_ms": 23.422,
+  "fps": 44.7,
+  "size_mb": 46.1,
+  "pass_p50_ms": [
+   22.419,
+   22.527,
+   22.685
+  ],
+  "model": "yolo11m",
+  "variant": "fp16_l1",
+  "batch": 8,
+  "img_per_s": 357.4,
+  "trtexec_gpu_median_ms": 23.1033,
+  "act_mem_mb": 440.6
+ },
+ "yolo11m|int8|8": {
+  "mean_ms": 39.404,
+  "p50_ms": 36.043,
+  "p95_ms": 49.629,
+  "fps": 25.4,
+  "size_mb": 384.2,
+  "pass_p50_ms": [
+   36.552,
+   36.043,
+   36.27
+  ],
+  "model": "yolo11m",
+  "variant": "int8",
+  "batch": 8,
+  "img_per_s": 203.0,
+  "trtexec_gpu_median_ms": 36.9719,
+  "act_mem_mb": 607.8
+ },
+ "yolo11m|int8fp16|8": {
+  "mean_ms": 34.043,
+  "p50_ms": 33.509,
+  "p95_ms": 37.12,
+  "fps": 29.4,
+  "size_mb": 400.6,
+  "pass_p50_ms": [
+   34.119,
+   33.509,
+   33.572
+  ],
+  "model": "yolo11m",
+  "variant": "int8fp16",
+  "batch": 8,
+  "img_per_s": 235.0,
+  "trtexec_gpu_median_ms": 34.3489,
+  "act_mem_mb": 607.8
+ },
+ "yolo11m|int8head|8": {
+  "mean_ms": 32.754,
+  "p50_ms": 31.844,
+  "p95_ms": 37.011,
+  "fps": 30.5,
+  "size_mb": 385.6,
+  "pass_p50_ms": [
+   32.183,
+   31.844,
+   31.948
+  ],
+  "model": "yolo11m",
+  "variant": "int8head",
+  "batch": 8,
+  "img_per_s": 244.2,
+  "trtexec_gpu_median_ms": 31.3149,
+  "act_mem_mb": 607.8
+ },
+ "yolo11l|fp16|1": {
+  "mean_ms": 3.479,
+  "p50_ms": 3.409,
+  "p95_ms": 3.824,
+  "fps": 287.4,
+  "size_mb": 50.8,
+  "pass_p50_ms": [
+   4.328,
+   3.575,
+   3.409
+  ],
+  "model": "yolo11l",
+  "variant": "fp16",
+  "batch": 1,
+  "img_per_s": 287.4,
+  "trtexec_gpu_median_ms": 3.39154,
+  "act_mem_mb": 64.1
+ },
+ "yolo11l|fp16_l1|1": {
+  "mean_ms": 3.494,
+  "p50_ms": 3.462,
+  "p95_ms": 3.622,
+  "fps": 286.2,
+  "size_mb": 50.8,
+  "pass_p50_ms": [
+   3.49,
+   3.49,
+   3.462
+  ],
+  "model": "yolo11l",
+  "variant": "fp16_l1",
+  "batch": 1,
+  "img_per_s": 286.2,
+  "trtexec_gpu_median_ms": 4.3653,
+  "act_mem_mb": 64.1
+ },
+ "yolo11l|int8|1": {
+  "mean_ms": 3.795,
+  "p50_ms": 3.715,
+  "p95_ms": 4.365,
+  "fps": 263.5,
+  "size_mb": 32.5,
+  "pass_p50_ms": [
+   3.795,
+   3.819,
+   3.715
+  ],
+  "model": "yolo11l",
+  "variant": "int8",
+  "batch": 1,
+  "img_per_s": 263.5,
+  "trtexec_gpu_median_ms": 4.39404,
+  "act_mem_mb": 49.2
+ },
+ "yolo11l|int8fp16|1": {
+  "mean_ms": 3.935,
+  "p50_ms": 3.885,
+  "p95_ms": 4.221,
+  "fps": 254.1,
+  "size_mb": 74.8,
+  "pass_p50_ms": [
+   3.92,
+   3.885,
+   4.198
+  ],
+  "model": "yolo11l",
+  "variant": "int8fp16",
+  "batch": 1,
+  "img_per_s": 254.1,
+  "trtexec_gpu_median_ms": 4.21765,
+  "act_mem_mb": 80.5
+ },
+ "yolo11l|int8head|1": {
+  "mean_ms": 3.821,
+  "p50_ms": 3.79,
+  "p95_ms": 3.915,
+  "fps": 261.7,
+  "size_mb": 74.0,
+  "pass_p50_ms": [
+   3.832,
+   3.79,
+   3.82
+  ],
+  "model": "yolo11l",
+  "variant": "int8head",
+  "batch": 1,
+  "img_per_s": 261.7,
+  "trtexec_gpu_median_ms": 3.80933,
+  "act_mem_mb": 80.5
+ },
+ "yolo11l|fp16|8": {
+  "mean_ms": 29.457,
+  "p50_ms": 27.814,
+  "p95_ms": 38.626,
+  "fps": 33.9,
+  "size_mb": 56.3,
+  "pass_p50_ms": [
+   28.588,
+   28.145,
+   27.814
+  ],
+  "model": "yolo11l",
+  "variant": "fp16",
+  "batch": 8,
+  "img_per_s": 271.6,
+  "trtexec_gpu_median_ms": 30.4126,
+  "act_mem_mb": 512.5
+ },
+ "yolo11l|fp16_l1|8": {
+  "mean_ms": 29.841,
+  "p50_ms": 28.301,
+  "p95_ms": 39.811,
+  "fps": 33.5,
+  "size_mb": 56.2,
+  "pass_p50_ms": [
+   28.301,
+   28.497,
+   29.04
+  ],
+  "model": "yolo11l",
+  "variant": "fp16_l1",
+  "batch": 8,
+  "img_per_s": 268.1,
+  "trtexec_gpu_median_ms": 29.0474,
+  "act_mem_mb": 512.5
+ },
+ "yolo11l|int8|8": {
+  "mean_ms": 35.961,
+  "p50_ms": 34.965,
+  "p95_ms": 40.493,
+  "fps": 27.8,
+  "size_mb": 68.4,
+  "pass_p50_ms": [
+   36.141,
+   34.965,
+   34.967
+  ],
+  "model": "yolo11l",
+  "variant": "int8",
+  "batch": 8,
+  "img_per_s": 222.5,
+  "trtexec_gpu_median_ms": 34.6772,
+  "act_mem_mb": 393.8
+ },
+ "yolo11l|int8fp16|8": {
+  "mean_ms": 38.05,
+  "p50_ms": 37.313,
+  "p95_ms": 41.272,
+  "fps": 26.3,
+  "size_mb": 406.5,
+  "pass_p50_ms": [
+   38.0,
+   37.503,
+   37.313
+  ],
+  "model": "yolo11l",
+  "variant": "int8fp16",
+  "batch": 8,
+  "img_per_s": 210.2,
+  "trtexec_gpu_median_ms": 37.71,
+  "act_mem_mb": 643.8
+ },
+ "yolo11l|int8head|8": {
+  "mean_ms": 38.946,
+  "p50_ms": 36.576,
+  "p95_ms": 49.755,
+  "fps": 25.7,
+  "size_mb": 391.3,
+  "pass_p50_ms": [
+   36.842,
+   36.576,
+   37.014
+  ],
+  "model": "yolo11l",
+  "variant": "int8head",
+  "batch": 8,
+  "img_per_s": 205.4,
+  "trtexec_gpu_median_ms": 36.4849,
+  "act_mem_mb": 643.8
+ },
+ "yolo11n|int8mm|1": {
+  "mean_ms": 1.317,
+  "p50_ms": 1.309,
+  "p95_ms": 1.325,
+  "fps": 759.4,
+  "size_mb": 18.6,
+  "pass_p50_ms": [
+   1.309,
+   1.333,
+   1.319
+  ],
+  "model": "yolo11n",
+  "variant": "int8mm",
+  "batch": 1,
+  "img_per_s": 759.3,
+  "trtexec_gpu_median_ms": 1.32007,
+  "act_mem_mb": 25.6
+ },
+ "yolo11m|int8mm|1": {
+  "mean_ms": 2.954,
+  "p50_ms": 2.944,
+  "p95_ms": 2.98,
+  "fps": 338.5,
+  "size_mb": 26.6,
+  "pass_p50_ms": [
+   2.959,
+   2.957,
+   2.944
+  ],
+  "model": "yolo11m",
+  "variant": "int8mm",
+  "batch": 1,
+  "img_per_s": 338.5,
+  "trtexec_gpu_median_ms": 2.95239,
+  "act_mem_mb": 44.7
+ },
+ "yolo11l|int8mm|1": {
+  "mean_ms": 3.796,
+  "p50_ms": 3.782,
+  "p95_ms": 3.821,
+  "fps": 263.4,
+  "size_mb": 32.5,
+  "pass_p50_ms": [
+   3.846,
+   3.797,
+   3.782
+  ],
+  "model": "yolo11l",
+  "variant": "int8mm",
+  "batch": 1,
+  "img_per_s": 263.4,
+  "trtexec_gpu_median_ms": 3.80267,
+  "act_mem_mb": 49.2
+ }
+}
