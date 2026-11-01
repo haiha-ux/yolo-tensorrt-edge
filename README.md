@@ -1,5 +1,7 @@
 # yolo-tensorrt-edge
 
+**[Try it in your browser](https://haiha-ux.github.io/yolo-tensorrt-edge/)**: YOLO11n via ONNX Runtime Web (WebGPU if the browser has it, otherwise WASM), upload an image or use the webcam. Browser numbers are not comparable to the TensorRT numbers below (different runtime, hardware and precision).
+
 Take a YOLO model from PyTorch to ONNX to TensorRT (FP32, FP16, INT8), then measure latency, throughput and COCO accuracy with the same scripts for every backend, so the speed/accuracy trade-off is a number and not a claim. Everything here uses public assets only: Ultralytics YOLO11n official weights and a 500-image slice of COCO val2017.
 
 ![latency vs mAP](results/latency_vs_map.png)
@@ -26,6 +28,15 @@ The INT8 rows in this first table used 200 val2017 images for calibration, kept 
 Building INT8 with FP16 fallback through my own builder failed at TensorRT's default optimization level (`Myelin ... Could not find any implementation for node {ForeignNode[Quantize ...]}`). It only builds at `builder_optimization_level <= 1`, which is why that row is slower and larger. Read it as a reproducible failure report, not a tuned result.
 
 ONNX Runtime ran on the CPU because the wheel on this machine has no CUDA provider, so its row is a CPU baseline. PyTorch's mAP is about 0.6 points lower than the ONNX and TensorRT runs because Ultralytics validates the `.pt` model with rectangular batches, while the exported models use fixed 640x640 letterboxing. The weights are the same.
+
+## Browser demo
+
+`docs/` is the GitHub Pages site: `index.html`, `app.js` (UI, letterbox, inference, drawing), `detect.js` (decoding and NMS), `yolo11n.onnx` (the same 10.2 MB FP32 640x640 export used above, no NMS inside) and a sample COCO val2017 image. ONNX Runtime Web 1.22.0 comes from jsDelivr (`ort.all.min.js`, pinned). The backend is WebGPU when `navigator.gpu` exists and the model loads on it, otherwise WASM (up to 4 threads); the page shows which one ran, and the per-frame inference time, pre-processing and NMS time.
+
+- NMS is done in JavaScript, because the ONNX has the raw `[1, 84, 8400]` output: pick the best class per anchor, drop scores below the slider (default 0.25), greedy per-class NMS at IoU 0.45, keep 100 boxes.
+- Check (`web_check/`): `nms_test.js` unit-tests IoU, NMS and decoding on synthetic data (Node). `gen_ref.py` runs Ultralytics on the same ONNX and sample image (conf 0.25, IoU 0.45); `run.mjs` loads the page in headless Chromium (Playwright, WASM backend, no GPU), runs the JS pipeline and matches boxes: 13 of 13 reference detections matched with the same class and IoU above 0.9, max score difference below 0.001.
+- That headless run is a CPU/WASM sanity check: about 130 to 230 ms per frame on this shared machine, with other jobs running. I did not test WebGPU here (no GPU in the headless browser), so the WebGPU path is untested. Browser numbers say nothing about TensorRT latency: different runtime, hardware, FP32 only, and browser overhead.
+- Local test: `cd docs && python3 -m http.server 8000`. The webcam needs HTTPS or localhost.
 
 ## When INT8 pays off
 

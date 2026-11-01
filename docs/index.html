@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YOLO11n in the browser</title>
+<style>
+  :root { --bg:#f4f5f7; --ink:#1d2330; --mute:#6b7280; --acc:#1f6feb; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:16px/1.4 system-ui,sans-serif; background:var(--bg); color:var(--ink); }
+  main { max-width:720px; margin:0 auto; padding:16px; }
+  h1 { font-size:1.3rem; margin:0 0 4px; }
+  p.sub { margin:0 0 12px; color:var(--mute); font-size:.9rem; }
+  .ctl { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; align-items:center; }
+  button, label.btn { font:inherit; padding:6px 12px; border:1px solid var(--acc); border-radius:6px; background:var(--acc); color:#fff; cursor:pointer; }
+  button.alt { background:#fff; color:var(--acc); }
+  label.conf { font-size:.9rem; color:var(--mute); }
+  #stage { position:relative; background:#111; border-radius:8px; overflow:hidden; min-height:80px; }
+  canvas { display:block; width:100%; height:auto; }
+  #stats { margin-top:10px; font:14px ui-monospace,monospace; background:#fff; border-radius:6px; padding:8px 10px; min-height:3.2em; }
+  footer { margin-top:14px; font-size:.8rem; color:var(--mute); }
+  a { color:var(--acc); }
+</style>
+</head>
+<body>
+<main>
+  <h1>YOLO11n object detection in your browser</h1>
+  <p class="sub">COCO-trained YOLO11n (10 MB ONNX) running locally with ONNX Runtime Web. Images and camera frames never leave your device.</p>
+  <div class="ctl">
+    <label class="btn">Upload image<input id="file" type="file" accept="image/*" hidden></label>
+    <button class="alt" id="sample">Sample image</button>
+    <button class="alt" id="cam">Start webcam</button>
+    <label class="conf">Score threshold <input id="conf" type="range" min="0.1" max="0.9" step="0.05" value="0.25"> <span id="cv">0.25</span></label>
+  </div>
+  <div id="stage"><canvas id="cv0" width="640" height="480"></canvas></div>
+  <div id="stats">Loading model...</div>
+  <footer>Times are for this browser and device only and are not comparable to the TensorRT numbers in the <a href="https://github.com/haiha-ux/yolo-tensorrt-edge">repository README</a> (different runtime, hardware and precision). Post-processing: score threshold, per-class NMS at IoU 0.45, written in plain JavaScript.</footer>
+</main>
+<video id="vid" playsinline muted hidden></video>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.all.min.js"></script>
+<script src="detect.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
